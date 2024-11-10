@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+dependencies {
+    implementation 'com.h2database:h2'
+}
+
+// 设置主类
+application {
+    mainClass = 'com.dethan.java.forkjoin.Main'
+}

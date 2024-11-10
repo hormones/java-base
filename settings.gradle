@@ -1,0 +1,4 @@
+rootProject.name = 'java-base'
+include 'boot-base'
+include 'java-forkjoin'
+
