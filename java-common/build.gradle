@@ -9,5 +9,5 @@ dependencies {
 
 // 设置主类
 application {
-    mainClass = 'com.dethan.java.forkjoin.Main'
+    mainClass = 'com.dethan.java.common.forkjoin.Main'
 }
