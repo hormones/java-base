@@ -5,7 +5,7 @@ import org.apache.lucene.util.RamUsageEstimator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SizeCalculator {
+public class SizeCalculator4Memory {
 
     public static void main(String[] args) {
         Map<String, Object> obj = new HashMap<>();
