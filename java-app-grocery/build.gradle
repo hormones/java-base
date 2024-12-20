@@ -1,0 +1,10 @@
+dependencies {
+    // 依赖于boot-base模块
+    implementation project(':java-common')
+    // https://mvnrepository.com/artifact/org.openjdk.jol/jol-core
+    implementation 'org.openjdk.jol:jol-core:0.17'
+    // https://mvnrepository.com/artifact/org.apache.lucene/lucene-core
+    implementation 'org.apache.lucene:lucene-core:9.12.1'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation 'org.apache.commons:commons-lang3:3.17.0'
+}
