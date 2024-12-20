@@ -1,12 +1,12 @@
-package com.dethan.boot;
+package com.dethan.boot.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JavaBootApplication {
+public class BootWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JavaBootApplication.class, args);
+        SpringApplication.run(BootWebApplication.class, args);
     }
 }

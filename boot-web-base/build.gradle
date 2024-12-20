@@ -1,0 +1,5 @@
+dependencies {
+    // 依赖于boot-base模块
+    implementation project(':boot-base')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}

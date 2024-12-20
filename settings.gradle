@@ -1,4 +1,4 @@
 rootProject.name = 'java-base'
-include 'boot-base'
 include 'java-common'
-
+include 'boot-base'
+include 'boot-web-base'
