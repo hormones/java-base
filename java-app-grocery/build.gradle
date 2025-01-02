@@ -7,5 +7,6 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.17.0'
     implementation 'org.apache.poi:poi:4.1.2'
     implementation 'org.apache.poi:poi-ooxml:4.1.2'
-    implementation 'com.alibaba:easyexcel:4.0.3'
+    // https://mvnrepository.com/artifact/cn.idev.excel/fastexcel
+    implementation 'cn.idev.excel:fastexcel:1.0.0'
 }
