@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "request.logging.enabled",
+      "type": "java.lang.Boolean",
+      "description": "whether to record the request time, default is false."
+    }
+  ]
+}

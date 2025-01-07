@@ -48,6 +48,7 @@ allprojects {
 
     tasks.withType(JavaCompile).configureEach {
         options.encoding = StandardCharsets.UTF_8
+        options.compilerArgs << "-parameters"
     }
 
     test {
