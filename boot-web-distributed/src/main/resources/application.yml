@@ -1,0 +1,21 @@
+management:
+  endpoints:
+    enabled-by-default: false # 默认关闭actuator监控
+
+request:
+  logging:
+    enabled: true # 开启请求日志
+
+spring:
+  data:
+    redis:
+      host:
+      port:
+      password:
+      database:
+  session:
+    redis:
+      repository-type: indexed
+      namespace: dethan:spring:session
+  profiles:
+    include: ignore

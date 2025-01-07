@@ -1,5 +1,5 @@
 dependencies {
     // 依赖于boot-base模块
     api project(':boot-base')
-    api 'org.springframework.boot:spring-boot-starter-web'
+    api 'org.springframework.boot:spring-boot-starter-data-redis'
 }

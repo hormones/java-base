@@ -3,4 +3,6 @@ include 'java-common'
 include 'boot-base'
 include 'boot-web-base'
 include 'java-app-grocery'
+include 'boot-distributed'
+include 'boot-web-distributed'
 

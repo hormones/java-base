@@ -1,0 +1,13 @@
+debug: true
+
+management:
+  endpoints:
+    enabled-by-default: true
+
+spring:
+  data:
+    redis:
+      host:
+      port:
+      password:
+      database:
