@@ -1,6 +1,5 @@
 dependencies {
     // 依赖于boot-common模块
-    api project(':java-common')
     api project(':boot-web-common')
     api 'org.springframework.boot:spring-boot-starter-security'
 }
