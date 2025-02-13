@@ -4,7 +4,10 @@ plugins {
 }
 
 dependencies {
-    implementation 'com.h2database:h2'
+    api 'com.h2database:h2'
+    api 'jakarta.persistence:jakarta.persistence-api'
+    api 'com.fasterxml.jackson.core:jackson-databind'
+    api 'org.slf4j:slf4j-api'
 }
 
 // 设置主类

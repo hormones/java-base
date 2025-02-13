@@ -1,5 +1,5 @@
 dependencies {
-    // 依赖于boot-base模块
-    api project(':boot-base')
+    // 依赖于boot-common模块
+    api project(':boot-common')
     api 'org.springframework.boot:spring-boot-starter-web'
 }

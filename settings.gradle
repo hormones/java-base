@@ -1,8 +1,9 @@
 rootProject.name = 'java-base'
 include 'java-common'
-include 'boot-base'
-include 'boot-web-base'
+include 'boot-common'
+include 'boot-web-common'
 include 'java-app-grocery'
 include 'boot-distributed'
 include 'boot-web-distributed'
+include 'boot-web-security'
 

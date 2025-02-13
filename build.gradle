@@ -3,12 +3,12 @@ import java.nio.charset.StandardCharsets
 plugins {
     id 'java'
     id 'java-library'
-    id 'io.spring.dependency-management' version '1.1.6'
+    id 'io.spring.dependency-management' version '1.1.7'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -21,9 +21,9 @@ allprojects {
     version = '1.0-SNAPSHOT'
 
     dependencyManagement {
-        // 优先使用spring-boot-3.3.5版本配置的依赖
+        // 优先使用spring-boot版本配置的依赖
         imports {
-            mavenBom 'org.springframework.boot:spring-boot-dependencies:3.3.5'
+            mavenBom 'org.springframework.boot:spring-boot-dependencies:3.4.1'
         }
     }
 

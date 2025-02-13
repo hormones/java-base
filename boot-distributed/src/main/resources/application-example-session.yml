@@ -1,0 +1,11 @@
+spring:
+  data:
+    redis:
+      host:
+      port:
+      password:
+      database:
+  session:
+    redis:
+      namespace: dethan:spring:session # session的key前缀
+      repository-type: indexed # 使用redis以可索引的方式存储session

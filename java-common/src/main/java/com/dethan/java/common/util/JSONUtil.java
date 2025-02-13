@@ -1,6 +1,6 @@
-package com.dethan.boot.util;
+package com.dethan.java.common.util;
 
-import com.dethan.boot.enums.IBaseEnum;
+import com.dethan.java.common.enums.IBaseEnum;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

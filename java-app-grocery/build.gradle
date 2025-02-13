@@ -1,5 +1,5 @@
 dependencies {
-    // 依赖于boot-base模块
+    // 依赖于boot-common模块
     implementation project(':java-common')
     // com.dethan.java.app.grocery.size
     implementation 'org.openjdk.jol:jol-core:0.17'

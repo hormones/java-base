@@ -1,5 +1,5 @@
 dependencies {
     api project(':boot-distributed')
-    api project(':boot-web-base')
+    api project(':boot-web-common')
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
