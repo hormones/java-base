@@ -55,11 +55,11 @@ allprojects {
     }
 
     // 跳过测试任务
-    tasks.withType(Test).tap {
+    /*tasks.withType(Test).tap {
         configureEach {
             enabled = false
         }
-    }
+    }*/
 
     test {
         useJUnitPlatform()

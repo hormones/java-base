@@ -1,6 +1,7 @@
 package com.dethan.boot.runner;
 
 import com.dethan.boot.entity.User;
+import com.dethan.boot.enums.UserState;
 import com.dethan.boot.service.UserService;
 import com.dethan.java.common.util.JSONUtil;
 import jakarta.annotation.Resource;
@@ -20,9 +21,12 @@ public class DataInitApplicationRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         // 生成测试数据
         User user = new User();
-        user.setFullName("Dethan");
+        user.setLoginName("dethan");
+        user.setUserName(user.getLoginName());
         user.setEmail("dethan@example.com");
+        user.setPhone("12345678901");
         user.setPassword("123456");
+        user.setState(UserState.NORMAL);
         user = userService.save(user);
         log.info("init user: {}", JSONUtil.toJSONString(user));
     }

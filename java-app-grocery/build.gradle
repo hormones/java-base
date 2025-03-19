@@ -5,8 +5,8 @@ dependencies {
     implementation 'org.openjdk.jol:jol-core:0.17'
     implementation 'org.apache.lucene:lucene-core:9.12.1'
     implementation 'org.apache.commons:commons-lang3:3.17.0'
-    implementation 'org.apache.poi:poi:4.1.2'
-    implementation 'org.apache.poi:poi-ooxml:4.1.2'
+    implementation 'org.apache.poi:poi:5.4.0'
+    implementation 'org.apache.poi:poi-ooxml:5.4.0'
     // https://mvnrepository.com/artifact/cn.idev.excel/fastexcel
     implementation 'cn.idev.excel:fastexcel:1.0.0'
 }
