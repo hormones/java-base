@@ -1,8 +1,8 @@
 package com.dethan.java.common.define;
 
-import com.dethan.java.common.enums.IBaseEnum;
+import com.dethan.java.common.enums.KeyEnum;
 
-public interface KeyInterface<T extends IBaseEnum> {
+public interface KeyInterface<T extends KeyEnum> {
 
     T getKey();
 }

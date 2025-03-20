@@ -1,7 +1,7 @@
 package com.dethan.boot.config;
 
+import com.dethan.java.common.enums.KeyEnum;
 import com.dethan.java.common.util.JSONUtil;
-import com.dethan.java.common.enums.IBaseEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Nullable;
 import org.apache.logging.log4j.util.Strings;
@@ -26,16 +26,16 @@ public class BaseConfig {
     }
 
     /**
-     * IBaseEnum的webmvc参数转换器，使IBaseEnum支持作为接口参数
+     * KeyEnum的webmvc参数转换器，使KeyEnum支持作为接口参数
      */
-    class IBaseEnumWebmvcConverter implements ConverterFactory<String, IBaseEnum> {
+    class KeyEnumWebmvcConverter implements ConverterFactory<String, KeyEnum> {
 
         @Override
-        public <T extends IBaseEnum> Converter<String, T> getConverter(Class<T> targetType) {
+        public <T extends KeyEnum> Converter<String, T> getConverter(Class<T> targetType) {
             return new StringToEnum<>(targetType);
         }
 
-        private record StringToEnum<T extends IBaseEnum>(Class<T> targetType) implements Converter<String, T> {
+        private record StringToEnum<T extends KeyEnum>(Class<T> targetType) implements Converter<String, T> {
 
             @Override
             public T convert(@Nullable String source) {
@@ -55,7 +55,7 @@ public class BaseConfig {
                     return null;
                 }
                 for (T e : enums) {
-                    if (Objects.equals(e.getValue(), value)) {
+                    if (Objects.equals(e.getKey(), value)) {
                         return e;
                     }
                 }

@@ -1,6 +1,6 @@
 package com.dethan.java.common.util;
 
-import com.dethan.java.common.enums.IBaseEnum;
+import com.dethan.java.common.enums.KeyEnum;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -31,8 +31,8 @@ public class JSONUtil {
 
     static {
         SimpleModule module = new SimpleModule();
-        // IBaseEnum 枚举字段添加翻译字段
-        module.addSerializer(IBaseEnum.class, new IBaseEnum.IBaseEnumJacksonSerializer());
+        // KeyEnum 枚举字段添加翻译字段
+        module.addSerializer(KeyEnum.class, new KeyEnum.KeyEnumJacksonSerializer());
         // LocalDateTime 序列化配置
         module.addSerializer(LocalDateTime.class, new LocalDateTimestampSerializer());
         module.addDeserializer(LocalDateTime.class, new LocalDateTimestampDeserializer());

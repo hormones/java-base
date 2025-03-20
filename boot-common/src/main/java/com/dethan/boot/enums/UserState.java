@@ -1,12 +1,12 @@
 package com.dethan.boot.enums;
 
-import com.dethan.java.common.enums.IBaseEnum;
+import com.dethan.java.common.enums.KeyEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum UserState implements IBaseEnum {
+public enum UserState implements KeyEnum {
 
     NORMAL(1, "正常"),
 
@@ -14,7 +14,7 @@ public enum UserState implements IBaseEnum {
 
     DELETED(3, "删除");
 
-    private final Integer value;
+    private final Integer key;
 
     private final String name;
 }

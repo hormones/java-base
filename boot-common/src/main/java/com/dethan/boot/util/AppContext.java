@@ -1,7 +1,7 @@
 package com.dethan.boot.util;
 
 import com.dethan.java.common.define.KeyInterface;
-import com.dethan.java.common.enums.IBaseEnum;
+import com.dethan.java.common.enums.KeyEnum;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
@@ -26,7 +26,7 @@ public class AppContext implements ApplicationContextAware {
 
     private static final Map<Class<?>, Map<String, ?>> BEANS_CACHE = new ConcurrentHashMap<>();
 
-    private static final Map<Class<? extends KeyInterface<?>>, Map<IBaseEnum, List<KeyInterface<?>>>> BEAN_KEY_CACHE = new ConcurrentHashMap<>();
+    private static final Map<Class<? extends KeyInterface<?>>, Map<KeyEnum, List<KeyInterface<?>>>> BEAN_KEY_CACHE = new ConcurrentHashMap<>();
 
     private static ApplicationContext applicationContext;
 
@@ -72,7 +72,7 @@ public class AppContext implements ApplicationContextAware {
      * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型
      * 如果有多个Bean匹配Class+Enum, 则抛出异常
      */
-    public static <B extends IBaseEnum, T extends KeyInterface<B>> T getBean(Class<T> clazz, B enumValue) {
+    public static <B extends KeyEnum, T extends KeyInterface<B>> T getBean(Class<T> clazz, B enumValue) {
         checkApplicationContext();
         List<T> findBeans = getBeans(clazz, enumValue);
         if (CollectionUtils.isEmpty(findBeans)) {
@@ -90,12 +90,12 @@ public class AppContext implements ApplicationContextAware {
      * 从静态变量ApplicationContext中取得多个Bean, 自动转型为所赋值对象的类型
      */
     @SuppressWarnings("unchecked")
-    public static <B extends IBaseEnum, T extends KeyInterface<B>> List<T> getBeans(Class<T> clazz, B enumValue) {
+    public static <B extends KeyEnum, T extends KeyInterface<B>> List<T> getBeans(Class<T> clazz, B enumValue) {
         if (clazz == KeyInterface.class) {
             throw new IllegalArgumentException("KeyInterface.class is illegal param");
         }
         checkApplicationContext();
-        Map<IBaseEnum, List<KeyInterface<?>>> caches = BEAN_KEY_CACHE.computeIfAbsent(clazz, k -> new ConcurrentHashMap<>());
+        Map<KeyEnum, List<KeyInterface<?>>> caches = BEAN_KEY_CACHE.computeIfAbsent(clazz, k -> new ConcurrentHashMap<>());
         return (List<T>) caches.computeIfAbsent(enumValue, k -> {
             Map<String, T> beans = getBeans(clazz);
             if (Objects.isNull(beans) || beans.isEmpty()) {
