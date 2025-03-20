@@ -7,7 +7,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,7 +26,7 @@ public class AppContext implements ApplicationContextAware {
 
     private static final Map<Class<?>, Map<String, ?>> BEANS_CACHE = new ConcurrentHashMap<>();
 
-    private static final Map<Class<KeyInterface<?>>, Map<IBaseEnum, KeyInterface<?>>> BEAN_KEY_CACHE = new ConcurrentHashMap<>();
+    private static final Map<Class<? extends KeyInterface<?>>, Map<IBaseEnum, List<KeyInterface<?>>>> BEAN_KEY_CACHE = new ConcurrentHashMap<>();
 
     private static ApplicationContext applicationContext;
 
@@ -70,29 +72,39 @@ public class AppContext implements ApplicationContextAware {
      * 从静态变量ApplicationContext中取得Bean, 自动转型为所赋值对象的类型
      * 如果有多个Bean匹配Class+Enum, 则抛出异常
      */
-    @SuppressWarnings("unchecked")
-    public static <T> T getBean(Class<KeyInterface<?>> type, IBaseEnum enumValue) {
+    public static <B extends IBaseEnum, T extends KeyInterface<B>> T getBean(Class<T> clazz, B enumValue) {
         checkApplicationContext();
-        Map<IBaseEnum, KeyInterface<?>> caches = BEAN_KEY_CACHE.computeIfAbsent(type, k -> new ConcurrentHashMap<>());
-        KeyInterface<?> bean = caches.computeIfAbsent(enumValue, k -> {
-            Map<String, KeyInterface<?>> beans = getBeans(type);
-            List<KeyInterface<?>> findBeans = beans.values().stream()
-                    .filter(b -> Objects.equals(b.getKey(), enumValue))
-                    .toList();
-            if (findBeans.isEmpty()) {
-                return KeyInterface.MISSED;
-            }
-            if (findBeans.size() == 1) {
-                return findBeans.getFirst();
-            }
-            String beanNames = findBeans.stream().map(b -> b.getClass().getName()).collect(Collectors.joining("\n"));
-            throw new RuntimeException("find multiple beans for interface %s with type %s: \n%s"
-                    .formatted(type.getName(), enumValue.getName(), beanNames));
-        });
-        if (bean == KeyInterface.MISSED) {
+        List<T> findBeans = getBeans(clazz, enumValue);
+        if (CollectionUtils.isEmpty(findBeans)) {
             return null;
         }
-        return (T) bean;
+        if (findBeans.size() > 1) {
+            String beanNames = findBeans.stream().map(b -> b.getClass().getName()).collect(Collectors.joining("\n"));
+            throw new RuntimeException("find multiple beans for interface %s with type %s: \n%s"
+                    .formatted(clazz.getName(), enumValue.getName(), beanNames));
+        }
+        return findBeans.getFirst();
+    }
+
+    /**
+     * 从静态变量ApplicationContext中取得多个Bean, 自动转型为所赋值对象的类型
+     */
+    @SuppressWarnings("unchecked")
+    public static <B extends IBaseEnum, T extends KeyInterface<B>> List<T> getBeans(Class<T> clazz, B enumValue) {
+        if (clazz == KeyInterface.class) {
+            throw new IllegalArgumentException("KeyInterface.class is illegal param");
+        }
+        checkApplicationContext();
+        Map<IBaseEnum, List<KeyInterface<?>>> caches = BEAN_KEY_CACHE.computeIfAbsent(clazz, k -> new ConcurrentHashMap<>());
+        return (List<T>) caches.computeIfAbsent(enumValue, k -> {
+            Map<String, T> beans = getBeans(clazz);
+            if (Objects.isNull(beans) || beans.isEmpty()) {
+                return Collections.emptyList();
+            }
+            return (List<KeyInterface<?>>) beans.values().stream()
+                    .filter(b -> Objects.equals(b.getKey(), enumValue))
+                    .toList();
+        });
     }
 
     /**
