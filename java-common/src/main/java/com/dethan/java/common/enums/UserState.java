@@ -1,6 +1,5 @@
-package com.dethan.boot.enums;
+package com.dethan.java.common.enums;
 
-import com.dethan.java.common.enums.KeyEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

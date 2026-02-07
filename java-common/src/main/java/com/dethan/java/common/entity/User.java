@@ -1,7 +1,6 @@
-package com.dethan.boot.entity;
+package com.dethan.java.common.entity;
 
-import com.dethan.boot.enums.UserState;
-import com.dethan.java.common.entity.BaseEntity;
+import com.dethan.java.common.enums.UserState;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

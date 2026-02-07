@@ -1,6 +1,6 @@
 package com.dethan.boot.service;
 
-import com.dethan.boot.entity.User;
+import com.dethan.java.common.entity.User;
 import com.dethan.boot.repository.UserRepository;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;

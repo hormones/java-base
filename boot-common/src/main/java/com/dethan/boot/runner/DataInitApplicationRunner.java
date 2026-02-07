@@ -1,7 +1,7 @@
 package com.dethan.boot.runner;
 
-import com.dethan.boot.entity.User;
-import com.dethan.boot.enums.UserState;
+import com.dethan.java.common.entity.User;
+import com.dethan.java.common.enums.UserState;
 import com.dethan.boot.service.UserService;
 import com.dethan.java.common.util.JSONUtil;
 import jakarta.annotation.Resource;

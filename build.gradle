@@ -42,11 +42,13 @@ allprojects {
     }
 
     dependencies {
+        implementation 'io.projectreactor:reactor-core'
         runtimeOnly 'com.h2database:h2'
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testImplementation platform('org.junit:junit-bom:5.10.0')
         testImplementation 'org.junit.jupiter:junit-jupiter'
+        testImplementation 'io.projectreactor:reactor-test'
     }
 
     tasks.withType(JavaCompile).configureEach {

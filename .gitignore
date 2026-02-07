@@ -37,6 +37,8 @@ bin/
 
 ### VS Code ###
 .vscode/
+.cursor/
+.kiro/
 
 ### Mac OS ###
 .DS_Store
